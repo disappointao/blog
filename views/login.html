@@ -11,8 +11,8 @@
 <body>
   <div class="main">
     <div class="header">
-      <a href="/">
-        <img src="/public/img/logo3.png" alt="">
+      <a href="/" style="background: #444444;display: block;height: 100%">
+        <img src="/public/img/logo.svg" alt="">
       </a>
       <h1>用户登录</h1>
     </div>
@@ -49,14 +49,12 @@
         data: formData,
         dataType: 'json',
         success: function (data) {
-          var err_code = data.err_code
-          if (err_code === 0) {
-            // window.alert('注册成功！')
-            // 服务端重定向针对异步请求无效
+          let status = data.status;
+          if (status === 0) {
             window.location.href = '/'
-          } else if (err_code === 1) {
+          } else if (status === 1) {
             window.alert('邮箱或者密码错误')
-          } else if (err_code === 500) {
+          } else if (status === 500) {
             window.alert('服务器忙，请稍后重试！')
           }
         }
