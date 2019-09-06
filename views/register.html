@@ -11,17 +11,11 @@
 <body>
   <div class="main">
     <div class="header">
-      <a href="/">
-        <img src="/public/img/logo3.png" alt="">
+      <a href="/" style="background: #444444;display: block;height: 100%">
+        <img src="/public/img/logo.svg" alt="">
       </a>
-      <h1>用户注册</h1>
+      <h2></h2>
     </div>
-    <!-- 
-      表单具有默认的提交行为，默认是同步的，同步表单提交，浏览器会锁死（转圈儿）等待服务端的响应结果。
-      表单的同步提交之后，无论服务端响应的是什么，都会直接把响应的结果覆盖掉当前页面。
-
-      后来有人想到了一种办法，来解决这个问题。
-     -->
     <form id="register_form" method="post" action="/register">
       <div class="form-group">
         <label for="email">邮箱</label>
@@ -43,6 +37,7 @@
   </div>
   <script src="/public/lib/jquery/jquery.js"></script>
   <script>
+    //表单异步提交
     $('#register_form').on('submit', function (e) {
       e.preventDefault();
       let formData = $(this).serialize();
@@ -52,6 +47,14 @@
         data: formData,
         dataType: 'json',
         success: function (data) {
+          let status = data.status;
+          if(status===0){
+            window.location.href='/';
+          }else if(status==1){
+            window.alert(data.message);
+          }else if(status==500){
+            window.alert(data.message);
+          }
         }
       })
     })
