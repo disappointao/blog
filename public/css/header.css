@@ -1,0 +1,9 @@
+.navbar{
+    background: #444444;
+}
+.navbar-brand{
+    padding: 7px 15px;
+}
+.dropdown-toggle{
+    background: #444444 !important;
+}
