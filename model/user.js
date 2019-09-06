@@ -1,5 +1,6 @@
 const mongoose=require('mongoose');
 mongoose.connect('mongodb://localhost/blog', { useNewUrlParser: true });
+
 let Schema=mongoose.Schema;
 let userSchema=new Schema({
   email:{
